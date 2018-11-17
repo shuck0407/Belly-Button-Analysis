@@ -150,7 +150,7 @@ def bubble_chart_data(sample):
 
     data = [bubble_data]                
 
-    layout = {'title':'Bacteria Counts by OTU', 'xaxis' : {'tickangle' : 45}, 'yaxis' : {'title' : 'Bacteria Count'}}
+    layout = {'title':'Bacteria Counts by Type', 'xaxis' : {'tickangle' : 45}, 'yaxis' : {'title' : 'Bacteria Count'}}
 
     bubble_chart = {'data' : data, 'layout' : layout}
 
