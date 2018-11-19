@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Import dependencies
 import datetime as dt
 import numpy as np
@@ -186,9 +185,6 @@ def get_metadata(sample):
     
     return meta_dict
 
-   
-
-=======
 # Import dependencies
 import datetime as dt
 import numpy as np
@@ -374,7 +370,4 @@ def get_metadata(sample):
     
     return meta_dict
 
-   
-
->>>>>>> ed4e85caf8b4647c8ba35388e4e733097fc952c3
    
