@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Import dependencies
 import datetime as dt
 import numpy as np
@@ -154,7 +153,5 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 
-    
 
->>>>>>> ed4e85caf8b4647c8ba35388e4e733097fc952c3
         
