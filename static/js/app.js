@@ -10,20 +10,24 @@ function bbChanged(newbb) {
     d3.json(bbURL, function(error, response) {
         if(error) {return console.warn(error);}
         console.log(response);  
+        
 
-        //get the metadata and build the table
-        var meta_data = response['meta'];
-        var tbody = d3.select("tbody");
-   
-        Object.entries(meta_data).forEach(function([key, value]) {
-            console.log(key, value)
-            var row = tbody.append("tr class="bold"");     
-            var cell = tbody.append("td");
-            cell.text(`${key}: ${value}`);
-            var row = tbody.append("tr"); 
-        });
-       
+        //First update the metadata table
+        var metadata = response['meta'];
+        console.log(metadata);
+        // Select the table with id of `#sample-metadata` using d3
+              var table = d3.select("#sample-metadata");
+          
+              // Use `.html("") to clear any existing metadata
+              table.html("");
+          
+              // Use `Object.entries` to add each key and value pair to the panel
               
+              Object.entries(metadata).forEach(([key, value]) => {
+                table.append("h6").text(`${key}: ${value}`);
+              });
+        
+                 
         // Grab values from the response json object to build the pie chart
         var pie_response = response['pie'];
         var data = [pie_response];
@@ -51,31 +55,25 @@ function bbChanged(newbb) {
 function init() {
       // create a URL variable for the buttons Flask route
       var buttonURL = '/buttons';
-
-      //Use Plotly and d3 to populate the dropdown list of belly buttons
-      Plotly.d3.json(buttonURL, function(error, response) {
+      
+      //Use d3 to populate the dropdown list of belly buttons
+      d3.json(buttonURL, function(error, response) {
           if (error) {
               return console.warn(error);
           };
       
-          console.log(response);
-
           var firstSample = response[0];
           console.log(firstSample);
+
+          var buttons = d3.select('#selDataset')
+          response.forEach((metavalue) => {
+              buttons.append('option')
+                     .text(metavalue) 
+                     .property('value', metavalue);
+             });
+          
       
-          Plotly.d3.select("#selDataset")
-                  .append('option')
-                  .attr('selected', 'true')
-                  .attr('disabled', 'true')
-                  .text('BB');
-              
-          var buttons = Plotly.d3.select('#selDataset').selectAll('option').data(response);
-          buttons.enter()
-                  .append('option')
-                  .attr('value', d => d)
-                  .text(d => d);
-      
-          Plotly.d3.select('#selDataset').on('change', function() {
+          d3.select('#selDataset').on('change', function() {
               var newbb = this.options[this.selectedIndex].value;
               bbChanged(newbb);
               });
