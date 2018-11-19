@@ -16,7 +16,7 @@
   
 
   <link rel="stylesheet" href="../static/css/styles.css">
-  <link rel="shortcut icon" href="">
+  <link rel="icon" type="image/png" href="../static/images/favicon-32x32.png" sizes="32x32" />
 </head>
 
 <body>
@@ -31,27 +31,18 @@
             <div class="col-md-2">
                 <div class="well">
                     <h5>Select a Belly Button:</h5>
-                        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                        <select id="selDataset" onchange="bbChanged(this.value)"></select>
                 </div>             
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Sample MetaData</h3>
                     </div>
-                    <div class="panel-body">
-                                       
-                    </div>
-                    <table id="sample-metatdata" class="table">
-                        <tbody>
-                          
-                        </tbody>
-
-                    </table>
-                    
-                        
-                </div>        
-               
-            </div>
-                    
+                    <div id="sample-metadata" class="panel-body"></div>
+                     
+                </div>
+                     
+            </div>        
+                         
             <div class="col-md-6">
                 <div class="bb-pie">
                       </div>
