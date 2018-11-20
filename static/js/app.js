@@ -11,6 +11,7 @@ function bbChanged(newbb) {
         if(error) {return console.warn(error);}
         console.log(response);  
 <<<<<<< HEAD
+<<<<<<< HEAD
         
 
         //First update the metadata table
@@ -30,21 +31,30 @@ function bbChanged(newbb) {
         
                  
 =======
+=======
+        
+>>>>>>> 81bc193975169f8a87cc790971ce8482f0724f2e
 
-        //get the metadata and build the table
-        var meta_data = response['meta'];
-        var tbody = d3.select("tbody");
-   
-        Object.entries(meta_data).forEach(function([key, value]) {
-            console.log(key, value)
-            var row = tbody.append("tr class="bold"");     
-            var cell = tbody.append("td");
-            cell.text(`${key}: ${value}`);
-            var row = tbody.append("tr"); 
-        });
-       
+        //First update the metadata table
+        var metadata = response['meta'];
+        console.log(metadata);
+        // Select the table with id of `#sample-metadata` using d3
+              var table = d3.select("#sample-metadata");
+          
+              // Use `.html("") to clear any existing metadata
+              table.html("");
+          
+              // Use `Object.entries` to add each key and value pair to the panel
               
+<<<<<<< HEAD
 >>>>>>> ed4e85caf8b4647c8ba35388e4e733097fc952c3
+=======
+              Object.entries(metadata).forEach(([key, value]) => {
+                table.append("h6").text(`${key}: ${value}`);
+              });
+        
+                 
+>>>>>>> 81bc193975169f8a87cc790971ce8482f0724f2e
         // Grab values from the response json object to build the pie chart
         var pie_response = response['pie'];
         var data = [pie_response];
@@ -73,6 +83,7 @@ function init() {
       // create a URL variable for the buttons Flask route
       var buttonURL = '/buttons';
 <<<<<<< HEAD
+<<<<<<< HEAD
       
       //Use d3 to populate the dropdown list of belly buttons
       d3.json(buttonURL, function(error, response) {
@@ -81,10 +92,16 @@ function init() {
       //Use Plotly and d3 to populate the dropdown list of belly buttons
       Plotly.d3.json(buttonURL, function(error, response) {
 >>>>>>> ed4e85caf8b4647c8ba35388e4e733097fc952c3
+=======
+      
+      //Use d3 to populate the dropdown list of belly buttons
+      d3.json(buttonURL, function(error, response) {
+>>>>>>> 81bc193975169f8a87cc790971ce8482f0724f2e
           if (error) {
               return console.warn(error);
           };
       
+<<<<<<< HEAD
 <<<<<<< HEAD
           var firstSample = response[0];
           console.log(firstSample);
@@ -101,9 +118,20 @@ function init() {
 =======
           console.log(response);
 
+=======
+>>>>>>> 81bc193975169f8a87cc790971ce8482f0724f2e
           var firstSample = response[0];
           console.log(firstSample);
+
+          var buttons = d3.select('#selDataset')
+          response.forEach((metavalue) => {
+              buttons.append('option')
+                     .text(metavalue) 
+                     .property('value', metavalue);
+             });
+          
       
+<<<<<<< HEAD
           Plotly.d3.select("#selDataset")
                   .append('option')
                   .attr('selected', 'true')
@@ -118,6 +146,9 @@ function init() {
       
           Plotly.d3.select('#selDataset').on('change', function() {
 >>>>>>> ed4e85caf8b4647c8ba35388e4e733097fc952c3
+=======
+          d3.select('#selDataset').on('change', function() {
+>>>>>>> 81bc193975169f8a87cc790971ce8482f0724f2e
               var newbb = this.options[this.selectedIndex].value;
               bbChanged(newbb);
               });
